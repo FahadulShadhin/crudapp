@@ -5,5 +5,23 @@
 {% endblock title %}
 
 {% block content %}
-    <h1 style="text-align: center; padding-top: 1em; padding-bottom: 1em;">Delete Employee Information</h1>
+    <!-- <h1 style="text-align: center; padding-top: 1em; padding-bottom: 1em;">Delete Employee Information</h1> -->
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <br><br>
+        <div class="alert alert-danger" role="alert">
+            Are you sure you want to delete "{{ employee.emp_name }}"?
+        </div>
+        <!-- <p>Are you sure you want to delete "{{phone}}"?</p> -->
+
+        <p>
+            <a href="{% url 'employees-list' %}"> <-- Go back</a>
+        </p>
+
+        <p>
+            <input class="btn btn-danger" type="submit" value="Confirm">
+        </p>
+    </form>
 {% endblock content %}
