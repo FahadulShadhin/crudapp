@@ -1,12 +1,26 @@
 from django.shortcuts import render, redirect
 from .models import Employee
 from .forms import EmployeeForm
+from django.db.models import Q
 
 
 def employees_list(request):
-    employees = Employee.objects.all()
+    # employees = Employee.objects.all()
+
+    search_query = ""
+
+    if request.GET.get('search_query'):
+        search_query = request.GET.get('search_query')
+
+    employees = Employee.objects.filter(
+        Q(emp_name__icontains=search_query) | 
+        Q(emp_role__icontains=search_query) |
+        Q(emp_salary__icontains=search_query)
+    )
+
     context = {
         'employees': employees,
+        'search_query': search_query,
     }
     return render(request, 'employee/list.html', context)
 
