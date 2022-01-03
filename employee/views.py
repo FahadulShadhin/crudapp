@@ -29,7 +29,7 @@ def create_employee(request):
     form = EmployeeForm()
 
     if request.method == 'POST':
-        form = EmployeeForm(request.POST)
+        form = EmployeeForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('employees-list')
@@ -45,7 +45,7 @@ def edit_employee(request, pk):
     form = EmployeeForm(instance=employee)
 
     if request.method == 'POST':
-        form = EmployeeForm(request.POST, instance=employee)
+        form = EmployeeForm(request.POST, request.FILES, instance=employee)
         if form.is_valid():
             form.save()
             return redirect('employees-list')

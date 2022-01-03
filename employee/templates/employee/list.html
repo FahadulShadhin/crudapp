@@ -23,6 +23,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
+                <th scope="col">Image</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Contact</th>
@@ -34,6 +35,9 @@
         <tbody>
             {% for emp in employees %}
                 <tr>
+                    <th scope="row">
+                        <img style="height: 100px; width: auto;" src="{{ emp.imageURL }}" class="card-img-top" alt="...">
+                    </th>
                     <th scope="row">{{ emp.emp_name }}</th>
                     <td>{{ emp.emp_email }}</td>
                     <td>{{ emp.emp_contact }}</td>

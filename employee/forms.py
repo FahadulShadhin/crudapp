@@ -6,7 +6,7 @@ class EmployeeForm(ModelForm):
     class Meta:
         model = Employee
         
-        fields = ('emp_name', 'emp_email', 'emp_contact', 'emp_role', 'emp_salary')
+        fields = ('emp_name', 'emp_email', 'emp_contact', 'emp_role', 'emp_salary', 'image')
 
         widgets = {
             'emp_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Name'}),
